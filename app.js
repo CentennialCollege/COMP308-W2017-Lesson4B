@@ -5,6 +5,25 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
+// import "mongoose"
+let mongoose = require('mongoose');
+
+// URI
+//let URI = "mongodb://localhost/videogames";
+
+let URI = "mongodb://thomas:123456@ds054999.mlab.com:54999/videogames";
+
+let db = mongoose.connect(URI,(err) => {
+  if(err) {
+    console.log("Error connecting to MongoDB Server: " + err);
+  } else {
+    console.log("Connected to MongoDB");
+  }
+});
+
+
+
+
 let index = require('./routes/index');
 
 let app = express();

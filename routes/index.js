@@ -15,7 +15,8 @@ router.get('/', (req, res, next) => {
 /* GET about page. */
 router.get('/about', (req, res, next) => {
   res.render('content/about', {
-    title: 'About'
+    title: 'About',
+    names: ["Tom", "Mike", "Sam", "James"]
    });
 });
 
