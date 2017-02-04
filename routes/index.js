@@ -1,5 +1,12 @@
 let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
+
+let game = require('../config/game');
+
+let gameName;
+let gameRating;
+let gameCost;
 
 // Global Route Variables
 let currentDate = new Date();
@@ -14,9 +21,21 @@ router.get('/', (req, res, next) => {
 
 /* GET about page. */
 router.get('/about', (req, res, next) => {
+  // find all games in the games collection
+  game.find((err, games) => {
+    if (err) {
+      return console.error(err);
+    }
+    gameName = games[0].name;
+    gameRating = games[0].rating;
+    gameCost = games[0].cost;
+
+  });
+
+
   res.render('content/about', {
     title: 'About',
-    names: ["Tom", "Mike", "Sam", "James"]
+    names: [gameName, gameRating, gameCost]
    });
 });
 
