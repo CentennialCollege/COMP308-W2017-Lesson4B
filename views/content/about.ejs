@@ -6,10 +6,16 @@
         <div class="col-md-offset-3 col-md-6">
           <h1><%= title %></h1>
           <p>About Me</p>
+
+          <br>
+          <h3>Games List</h3>
           <ul>
-            <% for(var count=0; count < names.length; count++) { %>
-              <li><a href="#"><%= names[count] %></a></li>
+              <% for (let count = 0; count < games.length; count++) { %>
+                <li class="list-group-item">
+                    <%= games[count].name %>
+                </li>
             <% } %>
+
           </ul>
         </div>
       </div>

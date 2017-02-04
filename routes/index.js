@@ -4,10 +4,6 @@ let mongoose = require('mongoose');
 
 let game = require('../config/game');
 
-let gameName;
-let gameRating;
-let gameCost;
-
 // Global Route Variables
 let currentDate = new Date();
   currentDate = currentDate.toLocaleTimeString();
@@ -26,17 +22,17 @@ router.get('/about', (req, res, next) => {
     if (err) {
       return console.error(err);
     }
-    gameName = games[0].name;
-    gameRating = games[0].rating;
-    gameCost = games[0].cost;
+    else {
+      res.render('content/about', {
+        title: 'About',
+        games: games
+      });
+    }
 
   });
 
 
-  res.render('content/about', {
-    title: 'About',
-    names: [gameName, gameRating, gameCost]
-   });
+
 });
 
 /* GET products page. */
